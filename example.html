@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script type="text/javascript" src="replicant.jquery.min.js"></script>
+    </head>
+
+    <body>
+    <div id="my-replicant">
+        <div class="replicant-base">
+            Email: <input type="email" name="emailAdress[]">
+            Full Name: <input type="text" name="fullName[]">
+            <a href="javascript: void(0)" class="replicant-add">Add Another Email</a>
+            <a href="javascript: void(0)" class="replicant-remove">Remove</a>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $("#my-replicant").replicant({
+            values : [
+                {'emailAdress[]' : 'myfirstemail@gmail.com', 'fullName[]' : 'Anderson Nunes'},
+                {'emailAdress[]' : 'mysecondemail@gmail.com', 'fullName[]' : 'Celia Nunes'},
+                {'emailAdress[]' : 'mythird@gmail.com', 'fullName[]' : 'Calebe Nunes'}
+            ]
+        });
+    </script>
+    </body>
+</html>
