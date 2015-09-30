@@ -39,7 +39,7 @@
 <p>You should include the jQuery library on your project</p>
 
 <div class="highlight highlight-text-html-basic"><pre><span class="pl-s1">    &lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
-<span class="pl-s1">    &lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>replicant.jquery.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span></pre></div>
+<span class="pl-s1">    &lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>replicant.jquery.min2.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span></pre></div>
 
 <p>After that, you must create your HTML as the following:</p>
 
@@ -52,6 +52,27 @@
     &lt;/<span class="pl-ent">div</span>&gt;
 <span class="pl-s1">    &lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span>&gt;</span>
 <span class="pl-s1">        $(<span class="pl-s"><span class="pl-pds">"</span>#my-replicant<span class="pl-pds">"</span></span>).replicant();</span>
+<span class="pl-s1">    &lt;/<span class="pl-ent">script</span>&gt;</span></pre></div>
+
+<h1>
+<a id="replicant-with-initial-data" class="anchor" href="#replicant-with-initial-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Replicant with initial data</h1>
+
+<div class="highlight highlight-text-html-basic"><pre>    &lt;<span class="pl-ent">div</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>my-replicant<span class="pl-pds">"</span></span>&gt;
+        &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>replicant-base<span class="pl-pds">"</span></span>&gt;
+            Email: &lt;<span class="pl-ent">input</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>email<span class="pl-pds">"</span></span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>emailAdrress[]<span class="pl-pds">"</span></span>&gt;&lt;<span class="pl-ent">br</span>&gt;
+            Full Name: &lt;<span class="pl-ent">input</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>fullName[]<span class="pl-pds">"</span></span>&gt;
+            &lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>javascript: void(0)<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>replicant-add<span class="pl-pds">"</span></span>&gt;Add Another Email&lt;/<span class="pl-ent">a</span>&gt;
+            &lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>javascript: void(0)<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>replicant-remove<span class="pl-pds">"</span></span>&gt;Remove&lt;/<span class="pl-ent">a</span>&gt;
+        &lt;/<span class="pl-ent">div</span>&gt;
+    &lt;/<span class="pl-ent">div</span>&gt;
+<span class="pl-s1">    &lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span>&gt;</span>
+<span class="pl-s1">        $(<span class="pl-s"><span class="pl-pds">"</span>#my-replicant<span class="pl-pds">"</span></span>).replicant({</span>
+<span class="pl-s1">            values <span class="pl-k">:</span> [</span>
+<span class="pl-s1">                {<span class="pl-s"><span class="pl-pds">'</span>emailAddress[]<span class="pl-pds">'</span></span> <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>myfirstemail@gmail.com<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>fullName[]<span class="pl-pds">'</span></span> <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Anderson Nunes<span class="pl-pds">'</span></span>},</span>
+<span class="pl-s1">                {<span class="pl-s"><span class="pl-pds">'</span>emailAddress[]<span class="pl-pds">'</span></span> <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>mysecondemail@gmail.com<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>fullName[]<span class="pl-pds">'</span></span> <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Celia Nunes<span class="pl-pds">'</span></span>},</span>
+<span class="pl-s1">                {<span class="pl-s"><span class="pl-pds">'</span>emailAddress[]<span class="pl-pds">'</span></span> <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>mythird@gmail.com<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>fullName[]<span class="pl-pds">'</span></span> <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Calebe Nunes<span class="pl-pds">'</span></span>}</span>
+<span class="pl-s1">            ]</span>
+<span class="pl-s1">        });</span>
 <span class="pl-s1">    &lt;/<span class="pl-ent">script</span>&gt;</span></pre></div>
         </section>
 
