@@ -30,7 +30,7 @@ After that, you must create your HTML as the following:
 ```html
     <div id="my-replicant">
         <div class="replicant-base">
-            Email: <input type="email" name="emailAdrress[]"><br>
+            Email: <input type="email" name="emailAdrress[]">
             Full Name: <input type="text" name="fullName[]">
             <a href="javascript: void(0)" class="replicant-add">Add Another Email</a>
             <a href="javascript: void(0)" class="replicant-remove">Remove</a>
@@ -39,9 +39,9 @@ After that, you must create your HTML as the following:
     <script type="text/javascript">
         $("#my-replicant").replicant({
             values : [
-                {'emailAddress[]' : 'myfirstemail@gmail.com', 'fullName[]' : 'Anderson Nunes'},
-                {'emailAddress[]' : 'mysecondemail@gmail.com', 'fullName[]' : 'Celia Nunes'},
-                {'emailAddress[]' : 'mythird@gmail.com', 'fullName[]' : 'Calebe Nunes'}
+                {'emailAdrress[]' : 'myfirstemail@gmail.com', 'fullName[]' : 'Anderson Nunes'},
+                {'emailAdrress[]' : 'mysecondemail@gmail.com', 'fullName[]' : 'Celia Nunes'},
+                {'emailAdrress[]' : 'mythird@gmail.com', 'fullName[]' : 'Calebe Nunes'}
             ]
         });
     </script>
