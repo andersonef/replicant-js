@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Replicant JS by andersonef</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Replicant JS</h1>
+        <h2>A jQuery plugin to help to create replicating dom (with add and remove button, when you click add it get cloned under the original dom)</h2>
+        <a href="https://github.com/andersonef/replicant-js" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="replicant-js" class="anchor" href="#replicant-js" aria-hidden="true"><span class="octicon octicon-link"></span></a>replicant-js</h1>
+
+<p>A jQuery plugin to help to create replicating dom (with add and remove button, when you click add it get cloned under the original dom)</p>
+
+<h1>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h1>
+
+<p>You should include the jQuery library on your project</p>
+
+<div class="highlight highlight-text-html-basic"><pre><span class="pl-s1">    &lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">    &lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>replicant.jquery.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span></pre></div>
+
+<p>After that, you must create your HTML as the following:</p>
+
+<div class="highlight highlight-text-html-basic"><pre>    &lt;<span class="pl-ent">div</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>my-replicant<span class="pl-pds">"</span></span>&gt;
+        &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>replicant-base<span class="pl-pds">"</span></span>&gt;
+            Email: &lt;<span class="pl-ent">input</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>email<span class="pl-pds">"</span></span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>emailAdrress[]<span class="pl-pds">"</span></span>&gt;
+            &lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>javascript: void(0)<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>replicant-add<span class="pl-pds">"</span></span>&gt;Add Another Email&lt;/<span class="pl-ent">a</span>&gt;
+            &lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>javascript: void(0)<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>replicant-remove<span class="pl-pds">"</span></span>&gt;Remove&lt;/<span class="pl-ent">a</span>&gt;
+        &lt;/<span class="pl-ent">div</span>&gt;
+    &lt;/<span class="pl-ent">div</span>&gt;
+<span class="pl-s1">    &lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span>&gt;</span>
+<span class="pl-s1">        $(<span class="pl-s"><span class="pl-pds">"</span>#my-replicant<span class="pl-pds">"</span></span>).replicant();</span>
+<span class="pl-s1">    &lt;/<span class="pl-ent">script</span>&gt;</span></pre></div>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/andersonef/replicant-js/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/andersonef/replicant-js/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/andersonef/replicant-js"></a> is maintained by <a href="https://github.com/andersonef">andersonef</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
