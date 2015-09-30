@@ -4,14 +4,14 @@ A jQuery plugin to help to create replicating dom (with add and remove button, w
 #Usage
 You should include the jQuery library on your project
 
-    ```HTML
+    ```html
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script type="text/javascript" src="replicant.jquery.min.js"></script>
     ```
 
 After that, you must create your HTML as the following:
 
-    ```HTML
+    ```html
     <div id="my-replicant">
         <div class="replicant-base">
             Email: <input type="email" name="emailAdrress[]">
