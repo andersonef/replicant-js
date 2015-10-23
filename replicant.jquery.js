@@ -19,6 +19,7 @@ $.fn.replicant = function(initialData){
     model.delegate(".replicant-remove", "click", function(){
         $(this).closest(".replicant-base").remove();
     });
+    if(initialData.onRender) initialData.onRender();
 
     this.replicate = function(value, ignoreAppend){
         console.log('base: ',this.model);
@@ -37,6 +38,8 @@ $.fn.replicant = function(initialData){
                 console.log('campo: ', field, value[field], $('[name="' + field +'"]', $(".replicant-base", this.container)), $('[name="' + field +'"]', $(".replicant-base", this.container)).length);
             }
         }
+
+        if(initialData.onRender) initialData.onRender();
     };
 
     //Do I need to put initial data here?
