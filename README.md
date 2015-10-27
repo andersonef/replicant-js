@@ -46,3 +46,17 @@ After that, you must create your HTML as the following:
         });
     </script>
 ```
+
+#Replicant with onReady event
+
+If you need to execute some javascript each time you replicate, just do it:
+
+```html
+    <script type="text/javascript">
+        $("#my-replicant").replicant({
+            onRender : function(){
+                console.log("I'm replicated!");
+            }
+        });
+    </script>
+```

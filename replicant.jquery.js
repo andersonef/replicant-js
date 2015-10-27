@@ -39,7 +39,7 @@ $.fn.replicant = function(initialData){
             }
         }
 
-        if(initialData.onRender) initialData.onRender();
+        if(initialData && initialData.onRender) initialData.onRender();
     };
 
     //Do I need to put initial data here?
