@@ -19,7 +19,7 @@ $.fn.replicant = function(initialData){
     model.delegate(".replicant-remove", "click", function(){
         $(this).closest(".replicant-base").remove();
     });
-    if(initialData.onRender) initialData.onRender();
+    if(initialData && initialData.onRender) initialData.onRender();
 
     this.replicate = function(value, ignoreAppend){
         console.log('base: ',this.model);
