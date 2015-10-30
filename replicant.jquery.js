@@ -34,7 +34,7 @@ $.fn.replicant = function(initialData){
         //setting data
         if(value){
             for(var field in value){
-                $('[name="' + field +'"]', $(".replicant-base:last", this.container)).attr('value', value[field]);
+                $('[name="' + field +'"]', $(".replicant-base:last", this.container)).val(value[field]);
                 console.log('campo: ', field, value[field], $('[name="' + field +'"]', $(".replicant-base", this.container)), $('[name="' + field +'"]', $(".replicant-base", this.container)).length);
             }
         }
