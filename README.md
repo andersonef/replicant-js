@@ -47,7 +47,7 @@ After that, you must create your HTML as the following:
     </script>
 ```
 
-#Replicant with onReady event
+#Replicant with onRender event
 
 If you need to execute some javascript each time you replicate, just do it:
 
@@ -60,3 +60,90 @@ If you need to execute some javascript each time you replicate, just do it:
         });
     </script>
 ```
+
+#Replicant with onBeforeRender event:
+
+Sometimes you must execute something before render your UI. The onBeforeRender event allows you to do it AND prevent the replication. You can prevent replicant just returning false on this event. This way:
+
+
+```html
+    <div id="my-replicant">
+        <div class="replicant-base">
+            Email: <input type="email" name="emailAddress[]">
+            Full Name: <input type="text" name="fullName[]">
+            <a href="javascript: void(0)" class="replicant-add">Add Another Email</a>
+            <a href="javascript: void(0)" class="replicant-remove">Remove</a>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $("#my-replicant").replicant({
+            values : [
+                {'emailAddress[]' : 'myfirstemail@gmail.com', 'fullName[]' : 'Anderson Nunes'},
+                {'emailAddress[]' : 'mysecondemail@gmail.com', 'fullName[]' : 'Celia Nunes'},
+                {'emailAddress[]' : 'mythird@gmail.com', 'fullName[]' : 'Calebe Nunes'}
+            ],
+            onBeforeRender : function(rowDataObject, index){
+                //if you want to prevent replicant to do his job when the email is forbidden@email.com or its replicated 5 times, you can do it:
+                if(rowDataObject['emailAddress[]'] == 'forbidden@email.com' || index >= 5) return false;
+                return true;
+            }
+        });
+
+    </script>
+```
+
+#Replicate programatically
+
+
+```html
+    <div id="my-replicant">
+        <div class="replicant-base">
+            Email: <input type="email" name="emailAddress[]">
+            Full Name: <input type="text" name="fullName[]">
+            <a href="javascript: void(0)" class="replicant-add">Add Another Email</a>
+            <a href="javascript: void(0)" class="replicant-remove">Remove</a>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $("#my-replicant").replicant({
+            values : [
+                {'emailAddress[]' : 'myfirstemail@gmail.com', 'fullName[]' : 'Anderson Nunes'},
+                {'emailAddress[]' : 'mysecondemail@gmail.com', 'fullName[]' : 'Celia Nunes'},
+                {'emailAddress[]' : 'mythird@gmail.com', 'fullName[]' : 'Calebe Nunes'}
+            ]
+        });
+        //you can add more values at anytime using this:
+        $("#my-replicant").replicant('replicate', {'emailAddress[]' : 'myNewEmail@gmail.com', 'fullName[]' : 'New Name'});
+    </script>
+```
+
+#Clear your replicant
+
+
+```html
+    <div id="my-replicant">
+        <div class="replicant-base">
+            Email: <input type="email" name="emailAddress[]">
+            Full Name: <input type="text" name="fullName[]">
+            <a href="javascript: void(0)" class="replicant-add">Add Another Email</a>
+            <a href="javascript: void(0)" class="replicant-remove">Remove</a>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $("#my-replicant").replicant({
+            values : [
+                {'emailAddress[]' : 'myfirstemail@gmail.com', 'fullName[]' : 'Anderson Nunes'},
+                {'emailAddress[]' : 'mysecondemail@gmail.com', 'fullName[]' : 'Celia Nunes'},
+                {'emailAddress[]' : 'mythird@gmail.com', 'fullName[]' : 'Calebe Nunes'}
+            ]
+        });
+
+        setTimeout(function(){
+            //you can clear everything just using this:
+            $("#my-replicant").replicant('clear');
+        }, 5000);
+
+    </script>
+```
+
+

@@ -22,6 +22,11 @@
             ],
             onRender : function(){
                 console.log('It was successfully replicated!');
+            },
+            onBeforeRender : function(value, qtd){
+                console.log('before render =>>>', value, qtd);
+                if(qtd == 6) return false;
+                return true;
             }
         });
     </script>

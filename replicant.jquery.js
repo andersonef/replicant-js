@@ -1,10 +1,23 @@
-$.fn.replicant = function(initialData){
+$.fn.replicant = function(initialData, secondData){
+
+    var instance = $(this).data('replicantInstance');
+    switch(initialData){
+        case 'replicate': return instance.replicate(secondData, false);
+        case 'clear' :
+            instance.container.html(instance.model);
+            $(".replicant-remove", instance.container).hide();
+            instance.qtd = 1;
+            return;
+    }
+
+    if(instance) return;
     var model = $(this);
     model = $(model);
     var self = this;
     this.totalItems = 0;
     this.model = $(".replicant-base", model).prop('outerHTML');
     this.container = model;
+    this.qtd = 1;
 
 
     //hidding remove button from the original content:
@@ -17,15 +30,18 @@ $.fn.replicant = function(initialData){
 
     //action for remove button
     model.delegate(".replicant-remove", "click", function(){
+        self.qtd--;
         $(this).closest(".replicant-base").remove();
     });
     if(initialData && initialData.onRender) initialData.onRender();
+    model.data('replicantInstance', this);
 
     this.replicate = function(value, ignoreAppend){
-        console.log('base: ',this.model);
+        if(initialData && initialData.onBeforeRender && !initialData.onBeforeRender(value, self.qtd)) return;
         if(!ignoreAppend) {
             this.container.append(this.model);
         }
+        self.qtd++;
         //when I replicate a new object, all remove buttons must be showed (except the last one):
         $(".replicant-remove", this.container).show();
         $(".replicant-remove:last", this.container).hide();
