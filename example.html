@@ -20,8 +20,8 @@
                 {'emailAdress[]' : 'mysecondemail@gmail.com', 'fullName[]' : 'Celia Nunes'},
                 {'emailAdress[]' : 'mythird@gmail.com', 'fullName[]' : 'Calebe Nunes'}
             ],
-            onRender : function(){
-                console.log('It was successfully replicated!');
+            onRender : function(linha){
+                console.log('It was successfully replicated!', linha);
             },
             onBeforeRender : function(value, qtd){
                 console.log('before render =>>>', value, qtd);

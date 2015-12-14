@@ -33,7 +33,7 @@ $.fn.replicant = function(initialData, secondData){
         self.qtd--;
         $(this).closest(".replicant-base").remove();
     });
-    if(initialData && initialData.onRender) initialData.onRender();
+    if(initialData && initialData.onRender) initialData.onRender(model);
     model.data('replicantInstance', this);
 
     this.replicate = function(value, ignoreAppend){
@@ -55,7 +55,7 @@ $.fn.replicant = function(initialData, secondData){
             }
         }
 
-        if(initialData && initialData.onRender) initialData.onRender();
+        if(initialData && initialData.onRender) initialData.onRender($(".replicant-base:last", this.container));
     };
 
     //Do I need to put initial data here?
