@@ -16,6 +16,7 @@ After that, you must create your HTML as the following:
     <div id="my-replicant">
         <div class="replicant-base">
             Email: <input type="email" name="emailAdrress[]">
+            <a href="javascript: void(0)" class="replicant-clear">Clear All</a>
             <a href="javascript: void(0)" class="replicant-add">Add Another Email</a>
             <a href="javascript: void(0)" class="replicant-remove">Remove</a>
         </div>
@@ -32,6 +33,7 @@ After that, you must create your HTML as the following:
         <div class="replicant-base">
             Email: <input type="email" name="emailAdrress[]">
             Full Name: <input type="text" name="fullName[]">
+            <a href="javascript: void(0)" class="replicant-clear">Clear All</a>
             <a href="javascript: void(0)" class="replicant-add">Add Another Email</a>
             <a href="javascript: void(0)" class="replicant-remove">Remove</a>
         </div>
@@ -71,6 +73,7 @@ Sometimes you must execute something before render your UI. The onBeforeRender e
         <div class="replicant-base">
             Email: <input type="email" name="emailAddress[]">
             Full Name: <input type="text" name="fullName[]">
+            <a href="javascript: void(0)" class="replicant-clear">Clear All</a>
             <a href="javascript: void(0)" class="replicant-add">Add Another Email</a>
             <a href="javascript: void(0)" class="replicant-remove">Remove</a>
         </div>
@@ -100,6 +103,7 @@ Sometimes you must execute something before render your UI. The onBeforeRender e
         <div class="replicant-base">
             Email: <input type="email" name="emailAddress[]">
             Full Name: <input type="text" name="fullName[]">
+            <a href="javascript: void(0)" class="replicant-clear">Clear All</a>
             <a href="javascript: void(0)" class="replicant-add">Add Another Email</a>
             <a href="javascript: void(0)" class="replicant-remove">Remove</a>
         </div>
@@ -125,6 +129,7 @@ Sometimes you must execute something before render your UI. The onBeforeRender e
         <div class="replicant-base">
             Email: <input type="email" name="emailAddress[]">
             Full Name: <input type="text" name="fullName[]">
+            <a href="javascript: void(0)" class="replicant-clear">Clear All</a>
             <a href="javascript: void(0)" class="replicant-add">Add Another Email</a>
             <a href="javascript: void(0)" class="replicant-remove">Remove</a>
         </div>

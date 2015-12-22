@@ -3,11 +3,7 @@ $.fn.replicant = function(initialData, secondData){
     var instance = $(this).data('replicantInstance');
     switch(initialData){
         case 'replicate': return instance.replicate(secondData, false);
-        case 'clear' :
-            instance.container.html(instance.model);
-            $(".replicant-remove", instance.container).hide();
-            instance.qtd = 1;
-            return;
+        case 'clear' : return instance.clear();
     }
 
     if(instance) return;
@@ -20,6 +16,14 @@ $.fn.replicant = function(initialData, secondData){
     this.qtd = 1;
 
 
+
+    this.clear          = function(){
+        this.container.html(this.model);
+        $(".replicant-remove", this.container).hide();
+        this.qtd = 1;
+    };
+
+
     //hidding remove button from the original content:
     $(".replicant-remove", model).hide();
 
@@ -27,6 +31,9 @@ $.fn.replicant = function(initialData, secondData){
     model.delegate(".replicant-add", "click", function(){
         self.replicate();
     });
+    model.delegate(".replicant-clear", "click", function(){
+        self.clear();
+    })
 
     //action for remove button
     model.delegate(".replicant-remove", "click", function(){
@@ -46,6 +53,7 @@ $.fn.replicant = function(initialData, secondData){
         $(".replicant-remove", this.container).show();
         $(".replicant-remove:last", this.container).hide();
         $(".replicant-add", this.container).not(':last').hide();
+        $(".replicant-clear", this.container).not(':last').hide();
 
         //setting data
         if(value){
