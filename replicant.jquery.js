@@ -1,12 +1,25 @@
 $.fn.replicant = function(initialData, secondData){
 
     var instance = $(this).data('replicantInstance');
-    switch(initialData){
-        case 'replicate': return instance.replicate(secondData, false);
-        case 'clear' : return instance.clear();
+    if(instance) {
+        switch (initialData) {
+            case 'replicate':
+                return instance.replicate(secondData, false);
+            case 'clear' :
+                return instance.clear();
+            case 'setModel' :
+                return instance.setModel(secondData);
+        }
+        console.log('verificando instance', instance, $(this));
+        if (initialData && initialData.values) {
+            instance.clear();
+            for (var x = 0; x < initialData.values.length; x++) {
+                instance.replicate(initialData.values[x], (x == 0));
+            }
+        }
+        console.log('nao vou fazer naada.. saindo');
+        return instance;
     }
-
-    if(instance) return;
     var model = $(this);
     model = $(model);
     var self = this;
@@ -14,13 +27,20 @@ $.fn.replicant = function(initialData, secondData){
     this.model = $(".replicant-base", model).prop('outerHTML');
     this.container = model;
     this.qtd = 1;
+    this.constructorParams = initialData;
 
 
+    this.setModel       = function(m){
+        this.model = m;
+        return this;
+    }
 
     this.clear          = function(){
         this.container.html(this.model);
         $(".replicant-remove", this.container).hide();
         this.qtd = 1;
+        if(this.constructorParams && this.constructorParams.onRender) this.constructorParams.onRender($(".replicant-base:last", $(this)));
+        return this;
     };
 
 
@@ -38,20 +58,34 @@ $.fn.replicant = function(initialData, secondData){
     //action for remove button
     model.delegate(".replicant-remove", "click", function(){
         self.qtd--;
-        $(this).closest(".replicant-base").remove();
+        var pai = $(this).closest(".replicant-base");
+
+        if(pai.is(':last-child')) {
+            var anterior = pai.prev(".replicant-base");
+            $(".replicant-add", anterior).show();
+            $(".replicant-clear", anterior).show();
+        }
+        var avo = pai.parent();
+        pai.remove();
+        if($(".replicant-base", avo).length == 1){
+            $(".replicant-remove", avo).hide();
+        }
+
     });
-    if(initialData && initialData.onRender) initialData.onRender(model);
+    if(self.constructorParams && self.constructorParams.onRender) self.constructorParams.onRender($(".replicant-base:last", $(this)));
     model.data('replicantInstance', this);
 
     this.replicate = function(value, ignoreAppend){
-        if(initialData && initialData.onBeforeRender && !initialData.onBeforeRender(value, self.qtd)) return;
+        if(this.constructorParams && this.constructorParams.onBeforeRender && !this.constructorParams.onBeforeRender(value, self.qtd)) return;
+
+        self.qtd++;
         if(!ignoreAppend) {
             this.container.append(this.model);
         }
-        self.qtd++;
+
         //when I replicate a new object, all remove buttons must be showed (except the last one):
         $(".replicant-remove", this.container).show();
-        $(".replicant-remove:last", this.container).hide();
+        //$(".replicant-remove:last", this.container).hide();
         $(".replicant-add", this.container).not(':last').hide();
         $(".replicant-clear", this.container).not(':last').hide();
 
@@ -63,7 +97,7 @@ $.fn.replicant = function(initialData, secondData){
             }
         }
 
-        if(initialData && initialData.onRender) initialData.onRender($(".replicant-base:last", this.container));
+        if(self.constructorParams && self.constructorParams.onRender) self.constructorParams.onRender($(".replicant-base:last", $(this)));
     };
 
     //Do I need to put initial data here?
