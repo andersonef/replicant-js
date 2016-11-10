@@ -56,7 +56,11 @@ If you need to execute some javascript each time you replicate, just do it:
 ```html
     <script type="text/javascript">
         $("#my-replicant").replicant({
-            onRender : function(){
+            onRender : function(replicatedElement, buttonWasClicked){
+                /**
+                *  replicatedElement: A jquery element representing the element which was replicated right before this method was triggered
+                *  buttonWasClicked: A boolean which indicates if this method was triggered by a user action (via click on add button) or via code (initial data) 
+                */
                 console.log("I'm replicated!");
             }
         });
@@ -85,7 +89,10 @@ Sometimes you must execute something before render your UI. The onBeforeRender e
                 {'emailAddress[]' : 'mysecondemail@gmail.com', 'fullName[]' : 'Celia Nunes'},
                 {'emailAddress[]' : 'mythird@gmail.com', 'fullName[]' : 'Calebe Nunes'}
             ],
-            onBeforeRender : function(rowDataObject, index){
+            onBeforeRender : function(rowDataObject, index, buttonWasClicked){
+                /**
+                *  buttonWasClicked: A boolean which indicates if this method was triggered by a user action (via click on add button) or via code (initial data) 
+                */
                 //if you want to prevent replicant to do his job when the email is forbidden@email.com or its replicated 5 times, you can do it:
                 if(rowDataObject['emailAddress[]'] == 'forbidden@email.com' || index >= 5) return false;
                 return true;

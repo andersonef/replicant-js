@@ -10,14 +10,14 @@ $.fn.replicant = function(initialData, secondData){
             case 'setModel' :
                 return instance.setModel(secondData);
         }
-        console.log('verificando instance', instance, $(this));
+        //console.log('verificando instance', instance, $(this));
         if (initialData && initialData.values) {
             instance.clear();
             for (var x = 0; x < initialData.values.length; x++) {
                 instance.replicate(initialData.values[x], (x == 0));
             }
         }
-        console.log('nao vou fazer naada.. saindo');
+        //console.log('nao vou fazer naada.. saindo');
         return instance;
     }
     var model = $(this);
@@ -35,24 +35,24 @@ $.fn.replicant = function(initialData, secondData){
         return this;
     }
 
-    this.clear          = function(){
+    this.clear          = function(buttonWasClicked){
         this.container.html(this.model);
         $(".replicant-remove", this.container).hide();
         this.qtd = 1;
-        if(this.constructorParams && this.constructorParams.onRender) this.constructorParams.onRender($(".replicant-base:last", $(this)));
+        if(this.constructorParams && this.constructorParams.onRender) this.constructorParams.onRender($(".replicant-base:last", $(this)), buttonWasClicked);
+        if(this.constructorParams && this.constructorParams.onClear) this.constructorParams.onClear(buttonWasClicked);
         return this;
     };
-
 
     //hidding remove button from the original content:
     $(".replicant-remove", model).hide();
 
     //action for add button
     model.delegate(".replicant-add", "click", function(){
-        self.replicate();
+        self.replicate(null, false, true);
     });
     model.delegate(".replicant-clear", "click", function(){
-        self.clear();
+        self.clear(true);
     })
 
     //action for remove button
@@ -70,13 +70,13 @@ $.fn.replicant = function(initialData, secondData){
         if($(".replicant-base", avo).length == 1){
             $(".replicant-remove", avo).hide();
         }
-
+        if(self.constructorParams && self.constructorParams.onRemove) self.constructorParams.onRemove();
     });
     if(self.constructorParams && self.constructorParams.onRender) self.constructorParams.onRender($(".replicant-base:last", $(this)));
     model.data('replicantInstance', this);
 
-    this.replicate = function(value, ignoreAppend){
-        if(this.constructorParams && this.constructorParams.onBeforeRender && !this.constructorParams.onBeforeRender(value, self.qtd)) return;
+    this.replicate = function(value, ignoreAppend, buttonWasClicked){
+        if(this.constructorParams && this.constructorParams.onBeforeRender && !this.constructorParams.onBeforeRender(value, self.qtd, buttonWasClicked)) return;
 
         self.qtd++;
         if(!ignoreAppend) {
@@ -89,15 +89,23 @@ $.fn.replicant = function(initialData, secondData){
         $(".replicant-add", this.container).not(':last').hide();
         $(".replicant-clear", this.container).not(':last').hide();
 
+
+
         //setting data
-        if(value){
+        if (value) {
+
             for(var field in value){
+
+                if(typeof value[field] === 'object') {
+                    $('[name="' + field +'"]', $(".replicant-base:last", this.container)).attr(value[field]['propriedade'], value[field]['value']);
+                }
+
                 $('[name="' + field +'"]', $(".replicant-base:last", this.container)).val(value[field]);
-                console.log('campo: ', field, value[field], $('[name="' + field +'"]', $(".replicant-base", this.container)), $('[name="' + field +'"]', $(".replicant-base", this.container)).length);
+                //console.log('campo: ', field, value[field], $('[name="' + field +'"]', $(".replicant-base", this.container)), $('[name="' + field +'"]', $(".replicant-base", this.container)).length);
             }
         }
 
-        if(self.constructorParams && self.constructorParams.onRender) self.constructorParams.onRender($(".replicant-base:last", $(this)));
+        if(self.constructorParams && self.constructorParams.onRender) self.constructorParams.onRender($(".replicant-base:last", $(this)), buttonWasClicked);
     };
 
     //Do I need to put initial data here?
